@@ -104,7 +104,9 @@ Poweroff is simulated with a reboot into rescue-pro mode."
 	if options["--action"] == "validate-all":
 		sys.exit(0)
 
-	if options["--action"] != "monitor" and not options["--plug"].endswith(".ovh.net"):
+	# servers used to end in .ovh.net, but not anymore
+	# try to be backwards compatible by checking if there's a "." or not in the name
+	if options["--action"] != "monitor" and not '.' in options["--plug"]:
 		options["--plug"] += ".ovh.net"
 
 	run_delay(options)
