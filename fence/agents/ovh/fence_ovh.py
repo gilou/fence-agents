@@ -42,7 +42,6 @@ def netboot_reboot(conn, options, mode):
 	conn.service.dedicatedHardRebootDo(options["session"],
 			options["--plug"], 'Fencing initiated by cluster', '', 'en')
 
-	conn.service.logout(options["session"])
 
 def reboot_time(conn, options):
 	result = conn.service.dedicatedHardRebootStatus(options["session"], options["--plug"])
